@@ -42,6 +42,16 @@ impl Vec4 {
     pub fn is_normalized(self) -> bool {
         is_normalized!(self)
     }
+
+    #[inline]
+    pub fn abs_diff_eq(self, rhs: Self) -> bool {
+        abs_diff_eq!(self, rhs)
+    }
+
+    #[inline]
+    pub fn abs_diff_zero(self) -> bool {
+        abs_diff_zero!(self)
+    }
 }
 
 impl AsRef<[f32; 4]> for Vec4 {

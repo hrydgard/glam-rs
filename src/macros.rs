@@ -8,10 +8,34 @@ macro_rules! glam_assert {
 }
 
 macro_rules! is_normalized {
-    ($self:expr, threshold => $threshold:expr) => {
-        ($self.length_squared() - 1.0).abs() < $threshold
+    ($self:expr, $max_diff:expr) => {
+        ($self.length_squared() - 1.0).abs() <= $max_diff
     };
     ($self:expr) => {
-        is_normalized!($self, threshold => 0.00001)
+        is_normalized!($self, core::f32::EPSILON)
+    };
+}
+
+macro_rules! abs_diff {
+    ($self:expr, $rhs:expr) => {
+        ($self - $rhs).abs()
+    };
+}
+
+macro_rules! abs_diff_eq {
+    ($self:expr, $rhs:expr, $max_diff:expr) => {
+        abs_diff!($self, $rhs).cmple($max_diff).all()
+    };
+    ($self:expr, $rhs:expr) => {
+        abs_diff_eq!($self, $rhs, Self::splat(core::f32::EPSILON))
+    };
+}
+
+macro_rules! abs_diff_zero {
+    ($self:expr, $max_diff:expr) => {
+        $self.abs().cmple($max_diff).all()
+    };
+    ($self:expr) => {
+        abs_diff_zero!($self, Self::splat(core::f32::EPSILON))
     };
 }
