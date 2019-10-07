@@ -1,4 +1,5 @@
-use approx::assert_ulps_eq;
+mod support;
+
 use glam::*;
 #[cfg(feature = "rand")]
 use rand::{Rng, SeedableRng};

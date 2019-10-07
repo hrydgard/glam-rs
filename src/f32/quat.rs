@@ -267,6 +267,11 @@ impl Quat {
     }
 
     #[inline]
+    pub fn abs_diff_eq(self, rhs: Self) -> bool {
+        self.0.abs_diff_eq(rhs.0)
+    }
+
+    #[inline]
     pub fn lerp(self, end: Self, t: f32) -> Self {
         glam_assert!(self.is_normalized());
         glam_assert!(end.is_normalized());

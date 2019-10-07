@@ -341,6 +341,13 @@ impl Mat3 {
         // TODO: optimise
         self.mul_vec3(rhs.extend(0.0)).truncate()
     }
+
+    #[inline]
+    pub fn abs_diff_eq(self, rhs: Self) -> bool {
+        self.x_axis.abs_diff_eq(rhs.x_axis)
+            && self.y_axis.abs_diff_eq(rhs.y_axis)
+            && self.z_axis.abs_diff_eq(rhs.z_axis)
+    }
 }
 
 #[cfg(feature = "rand")]

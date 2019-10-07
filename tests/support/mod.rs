@@ -1,3 +1,6 @@
+#[macro_use]
+mod macros;
+
 /// Helper function for migrating away from `glam::angle::deg`.
 #[allow(dead_code)]
 #[inline]

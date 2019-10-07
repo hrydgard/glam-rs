@@ -1,6 +1,5 @@
 mod support;
 
-use approx::assert_ulps_eq;
 use glam::f32::*;
 use support::deg;
 

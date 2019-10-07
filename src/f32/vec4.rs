@@ -52,6 +52,11 @@ impl Vec4 {
     pub fn abs_diff_zero(self) -> bool {
         abs_diff_zero!(self)
     }
+
+    #[inline]
+    pub fn rel_diff_eq(self, rhs: Self) -> bool {
+        rel_diff_eq!(self, rhs)
+    }
 }
 
 impl AsRef<[f32; 4]> for Vec4 {

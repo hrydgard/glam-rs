@@ -185,6 +185,11 @@ impl Mat2 {
         let s = Vec4::splat(rhs);
         Mat2(self.0 * s)
     }
+
+    #[inline]
+    pub fn abs_diff_eq(self, rhs: Self) -> bool {
+        self.0.abs_diff_eq(rhs.0)
+    }
 }
 
 #[cfg(feature = "rand")]

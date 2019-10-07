@@ -18,8 +18,7 @@ maintenance = { status = "experimental" }
 [features]
 default = ["std"]
 
-# approx is needed for unit tests
-std = ["approx"]
+std = []
 
 # enable additional glam checks
 glam-assert = []
