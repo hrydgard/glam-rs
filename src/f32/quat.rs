@@ -267,8 +267,8 @@ impl Quat {
     }
 
     #[inline]
-    pub fn abs_diff_eq(self, rhs: Self) -> bool {
-        self.0.abs_diff_eq(rhs.0)
+    pub fn abs_diff_eq(self, rhs: Self, max_abs_diff: f32) -> bool {
+        self.0.abs_diff_eq(rhs.0, max_abs_diff)
     }
 
     #[inline]

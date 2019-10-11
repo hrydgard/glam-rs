@@ -593,11 +593,11 @@ impl Mat4 {
     }
 
     #[inline]
-    pub fn abs_diff_eq(self, rhs: Self) -> bool {
-        self.x_axis.abs_diff_eq(rhs.x_axis)
-            && self.y_axis.abs_diff_eq(rhs.y_axis)
-            && self.z_axis.abs_diff_eq(rhs.z_axis)
-            && self.w_axis.abs_diff_eq(rhs.w_axis)
+    pub fn abs_diff_eq(self, rhs: Self, max_abs_diff: f32) -> bool {
+        self.x_axis.abs_diff_eq(rhs.x_axis, max_abs_diff)
+            && self.y_axis.abs_diff_eq(rhs.y_axis, max_abs_diff)
+            && self.z_axis.abs_diff_eq(rhs.z_axis, max_abs_diff)
+            && self.w_axis.abs_diff_eq(rhs.w_axis, max_abs_diff)
     }
 }
 

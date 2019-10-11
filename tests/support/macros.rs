@@ -1,28 +1,31 @@
 #[macro_export]
-macro_rules! assert_ulps_eq {
-    ($given:expr, $expected:expr, $max_abs_diff:expr, $max_rel_diff:expr) => {{
-        // let abs_diff = ($given - $expected).abs();
-        // if abs_diff.cmple($max_abs_diff).all() {
-        //     return true;
-        // }
-
-        // if $given.sign() != $expected.sign() {
-        //     return false;
-        // }
-
-        // let abs_a = $given.abs();
-        // let abs_b = $given.abs();
-        // let largest = abs_b.cmpgt(abs_a).select(abs_b, abs_a);
-
-        // abs_diff <= largest * $max_rel_diff
+macro_rules! assert_approx_eq {
+    ($a:expr, $b:expr) => {{
+        use support::FloatCompare;
+        let eps = core::f32::EPSILON;
+        let (a, b) = (&$a, &$b);
+        assert!(
+            a.approx_eq(b, eps),
+            "assertion failed: `(left !== right)` \
+             (left: `{:?}`, right: `{:?}`, expect diff: `{:?}`, real diff: `{:?}`)",
+            *a,
+            *b,
+            eps,
+            a.abs_diff(b)
+        );
     }};
-    ($given:expr, $expected:expr, epsilon = $epsilon:expr) => {{
-        $given.abs_diff_eq($expected)
-        // let max_diff = Self::splat($epsilon);
-        // assert_ulps_eq!($given, $expected, max_diff, max_diff)
+    ($a:expr, $b:expr, $eps:expr) => {{
+        use support::FloatCompare;
+        let (a, b) = (&$a, &$b);
+        let eps = $eps;
+        assert!(
+            a.approx_eq(b, $eps),
+            "assertion failed: `(left !== right)` \
+             (left: `{:?}`, right: `{:?}`, expect diff: `{:?}`, real diff: `{:?}`)",
+            *a,
+            *b,
+            eps,
+            a.abs_diff(b)
+        );
     }};
-    ($given:expr, $expected:expr) => {
-        $given.abs_diff_eq($expected)
-        // assert_eq!($given, $expected)
-    };
 }

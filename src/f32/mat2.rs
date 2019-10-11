@@ -188,7 +188,7 @@ impl Mat2 {
 
     #[inline]
     pub fn abs_diff_eq(self, rhs: Self) -> bool {
-        self.0.abs_diff_eq(rhs.0)
+        self.0.abs_diff_eq(rhs.0, core::f32::EPSILON)
     }
 }
 

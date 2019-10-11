@@ -58,13 +58,13 @@ impl Vec2 {
     }
 
     #[inline]
-    pub fn abs_diff_eq(self, rhs: Self) -> bool {
-        abs_diff_eq!(self, rhs)
+    pub fn abs_diff_eq(self, rhs: Self, max_abs_diff: f32) -> bool {
+        abs_diff_eq!(self, rhs, max_abs_diff)
     }
 
     #[inline]
-    pub fn abs_diff_zero(self) -> bool {
-        abs_diff_zero!(self)
+    pub fn abs_diff_zero(self, max_abs_diff: f32) -> bool {
+        abs_diff_zero!(self, max_abs_diff)
     }
 
     #[inline]

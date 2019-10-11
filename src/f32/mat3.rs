@@ -343,10 +343,10 @@ impl Mat3 {
     }
 
     #[inline]
-    pub fn abs_diff_eq(self, rhs: Self) -> bool {
-        self.x_axis.abs_diff_eq(rhs.x_axis)
-            && self.y_axis.abs_diff_eq(rhs.y_axis)
-            && self.z_axis.abs_diff_eq(rhs.z_axis)
+    pub fn abs_diff_eq(self, rhs: Self, epsilon: f32) -> bool {
+        self.x_axis.abs_diff_eq(rhs.x_axis, epsilon)
+            && self.y_axis.abs_diff_eq(rhs.y_axis, epsilon)
+            && self.z_axis.abs_diff_eq(rhs.z_axis, epsilon)
     }
 }
 

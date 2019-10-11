@@ -16,27 +16,15 @@ macro_rules! is_normalized {
     };
 }
 
-macro_rules! abs_diff {
-    ($self:expr, $rhs:expr) => {
-        ($self - $rhs).abs()
-    };
-}
-
 macro_rules! abs_diff_eq {
-    ($self:expr, $rhs:expr, $max_diff:expr) => {
-        abs_diff!($self, $rhs).cmple($max_diff).all()
-    };
-    ($self:expr, $rhs:expr) => {
-        abs_diff_eq!($self, $rhs, Self::splat(core::f32::EPSILON))
+    ($self:expr, $rhs:expr, $max_abs_diff:expr) => {
+        ($self - $rhs).abs().cmple(Self::splat($max_abs_diff)).all()
     };
 }
 
 macro_rules! abs_diff_zero {
-    ($self:expr, $max_diff:expr) => {
-        $self.abs().cmple($max_diff).all()
-    };
-    ($self:expr) => {
-        abs_diff_zero!($self, Self::splat(core::f32::EPSILON))
+    ($self:expr, $max_abs_diff:expr) => {
+        $self.abs().cmple(Self::splat($max_abs_diff)).all()
     };
 }
 
