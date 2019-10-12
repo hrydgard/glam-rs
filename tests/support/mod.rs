@@ -36,8 +36,7 @@ impl FloatCompare for f32 {
 impl FloatCompare for Mat2 {
     #[inline]
     fn approx_eq(&self, other: &Mat2, max_abs_diff: f32) -> bool {
-        self.x_axis().abs_diff_eq(other.x_axis(), max_abs_diff)
-            && self.y_axis().abs_diff_eq(other.y_axis(), max_abs_diff)
+        self.abs_diff_eq(*other, max_abs_diff)
     }
     #[inline]
     fn abs_diff(&self, other: &Mat2) -> Mat2 {
@@ -51,9 +50,7 @@ impl FloatCompare for Mat2 {
 impl FloatCompare for Mat3 {
     #[inline]
     fn approx_eq(&self, other: &Mat3, max_abs_diff: f32) -> bool {
-        self.x_axis().abs_diff_eq(other.x_axis(), max_abs_diff)
-            && self.y_axis().abs_diff_eq(other.y_axis(), max_abs_diff)
-            && self.z_axis().abs_diff_eq(other.z_axis(), max_abs_diff)
+        self.abs_diff_eq(*other, max_abs_diff)
     }
     #[inline]
     fn abs_diff(&self, other: &Mat3) -> Mat3 {
@@ -68,10 +65,7 @@ impl FloatCompare for Mat3 {
 impl FloatCompare for Mat4 {
     #[inline]
     fn approx_eq(&self, other: &Mat4, max_abs_diff: f32) -> bool {
-        self.x_axis().abs_diff_eq(other.x_axis(), max_abs_diff)
-            && self.y_axis().abs_diff_eq(other.y_axis(), max_abs_diff)
-            && self.z_axis().abs_diff_eq(other.z_axis(), max_abs_diff)
-            && self.w_axis().abs_diff_eq(other.w_axis(), max_abs_diff)
+        self.abs_diff_eq(*other, max_abs_diff)
     }
     #[inline]
     fn abs_diff(&self, other: &Mat4) -> Mat4 {

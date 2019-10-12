@@ -47,16 +47,6 @@ impl Vec4 {
     pub fn abs_diff_eq(self, rhs: Self, max_abs_diff: f32) -> bool {
         abs_diff_eq!(self, rhs, max_abs_diff)
     }
-
-    #[inline]
-    pub fn abs_diff_zero(self, max_abs_diff: f32) -> bool {
-        abs_diff_zero!(self, max_abs_diff)
-    }
-
-    #[inline]
-    pub fn rel_diff_eq(self, rhs: Self) -> bool {
-        rel_diff_eq!(self, rhs)
-    }
 }
 
 impl AsRef<[f32; 4]> for Vec4 {

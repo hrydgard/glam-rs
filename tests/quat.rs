@@ -151,11 +151,11 @@ fn test_quat_funcs() {
 
     let q1 = Quat::from(Vec4::from(q0) * 2.0);
     assert!(!q1.is_normalized());
-    assert_approx_eq!(q1.length_squared(), 4.0);
+    assert_approx_eq!(q1.length_squared(), 4.0, 1.0e-6);
     assert_approx_eq!(q1.length(), 2.0);
     assert_approx_eq!(q1.length_reciprocal(), 0.5);
     assert_approx_eq!(q0, q1.normalize());
-    assert_approx_eq!(q0.dot(q1), 2.0);
+    assert_approx_eq!(q0.dot(q1), 2.0, 1.0e-6);
 }
 
 #[test]

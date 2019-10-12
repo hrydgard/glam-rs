@@ -62,16 +62,6 @@ impl Vec2 {
         abs_diff_eq!(self, rhs, max_abs_diff)
     }
 
-    #[inline]
-    pub fn abs_diff_zero(self, max_abs_diff: f32) -> bool {
-        abs_diff_zero!(self, max_abs_diff)
-    }
-
-    #[inline]
-    pub fn rel_diff_eq(self, rhs: Self) -> bool {
-        rel_diff_eq!(self, rhs)
-    }
-
     /// Creates a new `Vec2`.
     #[inline]
     pub fn new(x: f32, y: f32) -> Vec2 {
