@@ -17,8 +17,13 @@ pub fn rad(angle: f32) -> f32 {
     angle
 }
 
+/// Trait used by the `assert_approx_eq` macro for floating point comparisons.
 pub trait FloatCompare<Rhs: ?Sized = Self> {
+    /// Return true if the absolute difference between `self` and `other` is
+    /// less then or equal to `max_abs_diff`.
     fn approx_eq(&self, other: &Rhs, max_abs_diff: f32) -> bool;
+    /// Returns the absolute difference of `self` and `other` which is printed
+    /// if `assert_approx_eq` fails.
     fn abs_diff(&self, other: &Rhs) -> Rhs;
 }
 
