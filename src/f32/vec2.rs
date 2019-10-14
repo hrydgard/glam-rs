@@ -310,7 +310,7 @@ impl Vec2 {
         Self(b.0 - (self.0 * a.0), b.1 - (self.1 * a.1))
     }
 
-    /// Returns a new `Vec2` containing the absolute value of each component of the original
+    /// Returns a new `Vec2` containing the absolute value of each element of the original
     /// `Vec2`.
     #[inline]
     pub fn abs(self) -> Self {
