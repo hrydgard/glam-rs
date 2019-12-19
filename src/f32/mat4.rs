@@ -604,6 +604,28 @@ impl Mat4 {
         )
     }
 
+    pub fn orthographic_rh(
+        left: f32,
+        right: f32,
+        bottom: f32,
+        top: f32,
+        near: f32,
+        far: f32,
+    ) -> Mat4 {
+        let a = 2.0 / (right - left);
+        let b = 2.0 / (top - bottom);
+        let c = 1.0 / (near - far);
+        let tx = -(right + left) / (right - left);
+        let ty = -(top + bottom) / (top - bottom);
+        let tz = near / (near - far);
+        Mat4::from_cols(
+            Vec4::new(a, 0.0, 0.0, 0.0),
+            Vec4::new(0.0, b, 0.0, 0.0),
+            Vec4::new(0.0, 0.0, c, 0.0),
+            Vec4::new(tx, ty, tz, 1.0),
+        )
+    }
+
     #[inline]
     pub fn mul_vec4(&self, other: Vec4) -> Vec4 {
         let mut res = self.x_axis * other.dup_x();
