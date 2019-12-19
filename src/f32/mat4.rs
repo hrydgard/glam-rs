@@ -561,6 +561,22 @@ impl Mat4 {
         )
     }
 
+    /// Creates an infinite reverse right-handed perspective projection matrix
+    /// with [0,1] depth range, with Vulkan Y-convention.
+    pub fn perspective_infinite_reverse_rh_vk(
+        fov_y_radians: f32,
+        aspect_ratio: f32,
+        z_near: f32,
+    ) -> Mat4 {
+        let f = 1.0 / (0.5 * fov_y_radians).tan();
+        Mat4::from_cols(
+            Vec4::new(f / aspect_ratio, 0.0, 0.0, 0.0),
+            Vec4::new(0.0, -f, 0.0, 0.0),
+            Vec4::new(0.0, 0.0, 0.0, -1.0),
+            Vec4::new(0.0, 0.0, z_near, 0.0),
+        )
+    }
+
     /// Creates a right-handed orthographic projection matrix with [-1,1] depth
     /// range.  This is the same as the OpenGL `glOrtho` function in OpenGL.
     /// See
